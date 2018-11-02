@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/spring/exam4/controller/BoardController.java=UTF-8
+encoding//src/main/java/com/spring/exam4/controller/CustomerJoinController.java=UTF-8
+encoding//src/main/java/com/spring/exam4/controller/CustomerLoginController.java=UTF-8
+encoding//src/main/java/com/spring/exam4/controller/CustomerUpdateController.java=UTF-8
+encoding//src/main/java/com/spring/exam4/dao/BoardDAO.java=UTF-8
+encoding//src/main/java/com/spring/exam4/dao/BoardMapper.java=UTF-8
+encoding//src/main/java/com/spring/exam4/dao/CustomerDAO.java=UTF-8
+encoding//src/main/java/com/spring/exam4/dao/CustomerMapper.java=UTF-8
+encoding//src/main/java/com/spring/exam4/interceptor/LoginInterceptor.java=UTF-8
+encoding//src/main/java/com/spring/exam4/util/FileService.java=UTF-8
+encoding//src/main/java/com/spring/exam4/util/PageNavigator.java=UTF-8
