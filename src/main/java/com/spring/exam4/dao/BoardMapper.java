@@ -11,32 +11,30 @@ import com.spring.exam4.vo.Reply;
 
 
 /**
- * 게시판 관련 Mybatis 사용 메서드
+ * 掲示板関連Mybatis使用メソッド
  */
 public interface BoardMapper {
-	//게시글 저장
+	// ゲシグル保存
 	public int insertBoard(Board board);
-	//글번호로 해당 게시글 검색
+	// 番号で該当書き込みを検索
 	public Board getBoard(int boardnum);
-	//조회수 1 증가
+	// 再会数1増加
 	public int addHits(int boardnum);
-	//검색 후의 총 글 개수
+	// 検索後の総文数
 	public int getTotal(String searchText);
-	
-	//검색 후의 현재 페이지 목록
+	// 検索後の在のページの一覧
 	public ArrayList<Board> listBoard(String searchText, RowBounds rb);
-	//글번호와 아이디로 해당 게시글 삭제
+	//番号とIDで該当書き込みを削除
 	public int deleteBoard(Board board);
-	//글 수정
+	// 掲示文修正
 	public int updateBoard(Board board);
-
-	//리플 저장
+	// リプル保存
 	public int insertReply(Reply reply);
-	//한 게시물의 리플 목록
+	// 掲示物のリプルリスト
 	public ArrayList<Reply> listReply(int boardnum);
-	//리플번호와 아이디로 해당 리플 삭제
+	// リプル番号とIDから当該リプル削除
 	public int deleteReply(Reply reply);
-	//리플 수정
+	// リプル修正
 	public int updateReply(Reply reply);
 
 }

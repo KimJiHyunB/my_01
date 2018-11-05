@@ -17,7 +17,9 @@ import com.spring.exam4.dao.CustomerDAO;
 import com.spring.exam4.vo.Customer;
 
 /**
- * user info modify
+ * user info modify	
+ *     モデルに"customer"という名前の値が保存されるとき,セッションにも保存
+ *    修正段階のスタートから最後の段階までセッションの値維持
  */
 @Controller
 @RequestMapping("customer")
@@ -29,7 +31,7 @@ public class CustomerUpdateController {
 	CustomerDAO dao;		
 	
 	/**
-	 * update Form
+	 *  会員情報修正フォーム
 	 */
 	@RequestMapping (value="update", method=RequestMethod.GET)
 	public String updateForm(HttpSession session, Model model) {
@@ -41,14 +43,17 @@ public class CustomerUpdateController {
 	}
 
 	/**
-	 * update
+	 *     会員 情報修正処理
+	 * @param customer updateFormで生成した  VO客体にユーザが入力した修正情報が追加されたオブジェクト。
+	 *  			    セッションに当該値がなければエラー。
 	 */
 	@RequestMapping (value="update", method=RequestMethod.POST)
 	public String update(@ModelAttribute("customer") Customer customer,Model model) {
 		
 		int result = dao.update(customer);
 		if (result != 1) {
-			model.addAttribute("errorMsg", "수정 실패");
+			// DB updateに失敗した場合,alert()出力用のメッセージをモデルに保存
+			model.addAttribute("errorMsg", "受精失敗");
 			return "customer/updateForm";
 		}
 		
@@ -57,11 +62,13 @@ public class CustomerUpdateController {
 
 	/**
 	 * update complete
+	 * @param customer DBに最終保存された情報
 	 */
 	@RequestMapping(value="updateComplete", method=RequestMethod.GET)
 	public String updateComplete(@ModelAttribute("customer") Customer customer, 
 			SessionStatus sessionStatus,Model model) {
-
+		
+		// 修正処理された情報をモデルに保存
 		model.addAttribute("result", customer);
 		sessionStatus.setComplete();
 		

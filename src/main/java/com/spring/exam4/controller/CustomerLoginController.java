@@ -23,6 +23,7 @@ import com.spring.exam4.vo.Customer;
 public class CustomerLoginController {
 	private static final Logger logger = LoggerFactory.getLogger(CustomerLoginController.class);
 
+	// 会員関連データ処理オブジェクト
 	@Autowired
 	CustomerDAO dao;
 
@@ -37,6 +38,10 @@ public class CustomerLoginController {
 
 	/**
 	 * login
+	 * @param custid ユーザーが入力したID
+	 * @param password ユーザーが入力したパスワード
+	 * @param model Model客体
+	 * @param session HtpSession 客体
 	 */
 	@RequestMapping (value="login", method=RequestMethod.POST)
 	public String login(
@@ -51,13 +56,14 @@ public class CustomerLoginController {
 			return "redirect:/";
 		}
 		else {
-			model.addAttribute("errorMsg", "ID 또는 비밀번호가 틀립니다.");
+			model.addAttribute("errorMsg", "ID or PASSWORD check");
 			return "customer/loginForm";
 		}
 	}
 	
 	/**
 	 * logout
+	 * @param session HttpSession객체
 	 */
 	@RequestMapping (value="logout", method=RequestMethod.GET)
 	public String logout(HttpSession session) {

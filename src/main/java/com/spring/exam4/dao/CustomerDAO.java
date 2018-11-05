@@ -8,7 +8,7 @@ import com.spring.exam4.vo.Customer;
 
 
 /**
- * customer DAO
+ * 会員関連DAO
  */
 @Repository
 public class CustomerDAO {
@@ -16,7 +16,8 @@ public class CustomerDAO {
 	SqlSession sqlSession;
 	
 	/**
-	 * join
+	 * 会員加入処理
+	 * @param customer 使用者が入力した加入情報
 	 */
 	public int insert(Customer customer) {
 		CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
@@ -32,7 +33,9 @@ public class CustomerDAO {
 	}
 	
 	/**
-	 * select 
+	 * IDで会員情報検索
+	 * @param custid 検索するID
+	 * @return 検索された会員情報。なければ null。
 	 */
 	public Customer get(String custid) {
 		CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
@@ -42,6 +45,7 @@ public class CustomerDAO {
 	
 	/**
 	 * user modify
+	 * @param customer 使用者が入力した修正情報
 	 */
 	public int update(Customer customer) {
 		CustomerMapper mapper = sqlSession.getMapper(CustomerMapper.class);
